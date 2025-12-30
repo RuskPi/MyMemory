@@ -1,0 +1,54 @@
+twitchは字幕機能とか自動翻訳が配信者側でしか制御できないので、自分で字幕を付ける方法（備忘）
+
+チャット欄リアルタイム翻訳
+https://immersivetranslate.com/ja/
+
+配信音声翻訳
+chrome-extension://jodfjmaiakpnmeddgpeflpafebmlhppn/options.html#instruction
+
+speach translaterを入れたら↑のページにアクセスし、各方法で設定。
+
+speach translaterはtwitchがダークモード状態だと、字幕背景が透過できないため、stylusという拡張機能を用い、twitchのスタイルシートを上書き。
+
+外見はダークモード状態だがspeach translaterにはライトモードと識別されるように設定。
+拡張機能の管理からスタイルの新規作成
+以下のように記載
+
+@-moz-document domain("twitch.tv") {
+  /* Speech Translatorがライトと認識 */
+  html, body {
+    color-scheme: light !important;
+  }
+  
+  /* ダークUIは完全維持 */
+  :root {
+    color-scheme: dark !important;
+  }
+  
+  /* チャット背景透過用 */
+  .chat-scrollable-area {
+    background: rgba(0,0,0,0.8) !important;
+  }
+}
+@-moz-document domain("twitch.tv") {
+/* Speech Translatorがライトと認識 */
+HTML、本文 {
+カラースキーム:ライト!重要;
+  }
+
+/* ダークUIは完全維持 */
+:根{
+カラースキーム:暗い!重要;
+  }
+
+/* チャット背景透過用 */
+.chat-scrollable-area {
+背景:RGBA(0,0,0,0.8) !重要;
+  }
+}
+
+speach translaterは無課金だとgoogle翻訳のみで、翻訳精度が微妙
+
+課金して各サービスのAPIキーを取得すれば各サービスを利用することもできるが、speach translater自体への課金(13.3$/月)と各サービスへの課金も必要になるため、コスト大
+
+
